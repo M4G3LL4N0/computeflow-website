@@ -1,0 +1,9 @@
+{
+  "name": "computeflow-website",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Public website for ComputeFlow, a local compute routing engine.",
+  "scripts": {
+    "build": "node -e \"console.log('static site')\""
+  }
+}

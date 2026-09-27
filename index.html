@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ComputeFlow — route the workload, do not buy the whole cloud</title>
+    <meta
+      name="description"
+      content="ComputeFlow is a local routing engine for compute. Paste a workload, score pools on cost, latency, energy, sovereignty, risk, and availability, and get a split plan with the trade-offs named."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="mast">
+      <a class="brand" href="/">ComputeFlow</a>
+      <nav>
+        <a href="#route">Router</a>
+        <a href="#axes">Axes</a>
+        <a href="#request">Request</a>
+      </nav>
+      <p class="maturity">Local MVP · labeled demo</p>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Compute control plane · not a GPU marketplace</p>
+          <h1>Terafab builds compute. ComputeFlow decides where a job should run.</h1>
+          <p class="lede">
+            Teams still pick a vendor in a spreadsheet, then discover latency,
+            energy, and sovereignty after the bill arrives. ComputeFlow takes a
+            workload definition and returns a weighted split across pools —
+            cloud GPU, private cluster, sovereign region, edge, and reserved
+            future supply — with the trade-offs written in plain English.
+          </p>
+          <div class="actions">
+            <a class="btn primary" id="primary-cta" href="#route">Route this workload</a>
+            <a class="btn" href="#axes">See the six axes</a>
+          </div>
+        </div>
+
+        <aside class="board" aria-label="Sample routing board">
+          <div class="board-top">
+            <span>ROUTING SURFACE</span>
+            <span>DETERMINISTIC · LOCAL</span>
+          </div>
+          <dl class="split">
+            <div><dt>Cloud GPU · US-East</dt><dd>Primary share</dd></div>
+            <div><dt>Sovereign · EU</dt><dd>Data-bound share</dd></div>
+            <div><dt>Edge robotics</dt><dd>Latency share</dd></div>
+            <div><dt>Forward reserved</dt><dd>Capacity hedge</dd></div>
+          </dl>
+          <p class="board-note">
+            This board is a product sketch, not live capacity or a customer bill.
+          </p>
+        </aside>
+      </section>
+
+      <section id="route">
+        <h2>From workload to a split plan</h2>
+        <p>
+          Define the job. Score every pool. Split the work. Explain why.
+          The engine on this page is a static readout of that loop — no paid
+          APIs, no claimed live inventory.
+        </p>
+        <form id="router" class="router">
+          <label>
+            Workload
+            <select name="kind">
+              <option value="train">Model training</option>
+              <option value="infer">Online inference</option>
+              <option value="edge">Robotics / edge control</option>
+            </select>
+          </label>
+          <label>
+            Hard constraint
+            <select name="bind">
+              <option value="none">None named</option>
+              <option value="eu">Stay in the EU</option>
+              <option value="lat">Keep p50 under a few milliseconds</option>
+            </select>
+          </label>
+          <button type="submit">Build the split</button>
+        </form>
+        <pre id="plan" hidden></pre>
+      </section>
+
+      <section id="axes">
+        <h2>Six axes, one plan</h2>
+        <ul class="facts">
+          <li>Cost — what the run is likely to spend, not a vendor slogan.</li>
+          <li>Latency — time to first useful token, frame, or control loop.</li>
+          <li>Energy — watts and locality, not only dollars.</li>
+          <li>Sovereignty — where the bytes are allowed to live.</li>
+          <li>Risk — quota shock, outage, and single-supplier concentration.</li>
+          <li>Availability — what can actually accept the job now.</li>
+        </ul>
+      </section>
+
+      <section id="request">
+        <h2>Request a routing brief</h2>
+        <p>
+          This page does not send email or connect to a backend. Submit to open
+          a mail draft on your machine with the request filled in.
+        </p>
+        <form id="request-form" class="request">
+          <label>Name <input name="name" required autocomplete="name" /></label>
+          <label>Email <input name="email" type="email" required autocomplete="email" /></label>
+          <label>Workload you want routed <textarea name="note" required rows="4"></textarea></label>
+          <button type="submit">Open a request draft</button>
+          <p class="status" id="request-status" hidden></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>ComputeFlow · local routing MVP · no invented customers, capacity, or bills</footer>
+    <script src="/app.js"></script>
+  </body>
+</html>
