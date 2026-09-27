@@ -4,6 +4,6 @@
   "version": "0.1.0",
   "description": "Public website for ComputeFlow, a local compute routing engine.",
   "scripts": {
-    "build": "node -e \"console.log('static site')\""
+    "build": "node -e \"const fs=require('fs'); fs.mkdirSync('public',{recursive:true}); for (const f of fs.readdirSync('.')) { if (['public','node_modules','.git','.vercel'].includes(f)) continue; if (fs.statSync(f).isFile()) fs.copyFileSync(f,'public/'+f); }\""
   }
 }
